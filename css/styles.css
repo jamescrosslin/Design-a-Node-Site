@@ -1,0 +1,85 @@
+
+body {
+  background: #eceeef;
+  text-align: center;
+  margin: 100px auto;
+  max-width: 462px;
+  padding: 0 40px;
+  font: 18px normal "Varela Round", Helvetica, serif;
+  color: #777b7e;
+}
+
+img {
+  width: 100%;
+}
+
+#searchIcon,
+#avatar {
+  width: 50%;
+  border-radius: 50%;
+  margin: 0 25% 0 25%;
+}
+
+input {
+  font-family: "Varela Round", Helvetica, serif;
+  font-size: 18px;
+  padding: 31px 0;
+  margin: 10px 0;
+  text-align: center;
+  width: 360px;
+  border-radius: 4px;
+  border: 1px solid #d5dde4;
+  color: #2c3238;
+}
+
+#username {
+  margin: 20px 0 0;
+}
+
+.button {
+  border-color: #5fb6e1;
+  background: #5fb6e1;
+  color: #fff;
+}
+
+#error {
+  width: 100%;
+  padding: 22px 0;
+  background: #ffe6b2;
+  color: #c5a14e;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+#profile {
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #d5dde4;
+  padding: 40px 0 0;
+  margin: -40px 0 0;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 40px 0 0;
+}
+
+li {
+  display: inline-block;
+  width: 100%;
+  padding: 22px 0;
+  margin: 0;
+  border-top: 1px solid #d5dde4;
+}
+
+a,
+a:visited {
+  color: #5fb6e1;
+  text-decoration: none;
+}
+
+span {
+  color: #2c3238;
+}
