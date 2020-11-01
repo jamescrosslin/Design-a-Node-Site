@@ -4,11 +4,11 @@ const querystring = require("querystring")
 const commonHeaders = ["Content-Type", "text/html"]
 const fs = require("fs")
 
-function css(request, response){
-  if (request.url.indexOf(".css") !== -1){
-  let fileContents = fs.readFileSync('./css/styles.css', {encoding: 'utf8'})
-  response.write(fileContents)
-  response.end()
+function css(request, response) {
+  if (request.url.indexOf(".css") !== -1) {
+    let fileContents = fs.readFileSync("./css/styles.css", { encoding: "utf8" })
+    response.write(fileContents)
+    response.end()
   }
 }
 

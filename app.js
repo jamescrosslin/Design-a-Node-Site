@@ -12,8 +12,12 @@ const port = 3000
 
 const server = http.createServer((request, response) => {
   router.css(request, response)
-  router.home(request, response)
-  router.user(request, response)
+  if (!response.headersSent) {
+    router.home(request, response)
+  }
+  if (!response.headersSent) {
+    router.user(request, response)
+  }
 })
 
 server.listen(port, hostname, () => {
