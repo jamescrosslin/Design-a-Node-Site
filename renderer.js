@@ -1,4 +1,4 @@
-var fs = require("fs")
+import { readFileSync } from "fs"
 
 function mergeValues(values, content) {
   // Cycle over the keys
@@ -10,13 +10,11 @@ function mergeValues(values, content) {
   return content
 }
 
-function view(templateName, values, response) {
+export function view(templateName, values, response) {
   // Read from the template file
-  let fileContents = fs.readFileSync(`./views/${templateName}.html`, "utf-8")
+  let fileContents = readFileSync(`./views/${templateName}.html`, "utf-8")
   // Insert values in to the content
   fileContents = mergeValues(values, fileContents)
   // Write out the contents to the response
   response.write(fileContents)
 }
-
-module.exports.view = view

@@ -1,12 +1,12 @@
-const Profile = require("./profile.js")
-const renderer = require("./renderer")
-const querystring = require("querystring")
+import { Profile } from "./profile.js"
+import { view } from "./renderer.js"
+import { parse } from "querystring"
 const commonHeaders = ["Content-Type", "text/html"]
-const fs = require("fs")
+import { readFileSync } from "fs"
 
 function css(request, response) {
   if (request.url.indexOf(".css") !== -1) {
-    let fileContents = fs.readFileSync("./css/styles.css", { encoding: "utf8" })
+    let fileContents = readFileSync("./css/styles.css", { encoding: "utf8" })
     response.write(fileContents)
     response.end()
   }
@@ -20,9 +20,9 @@ function home(request, response) {
       //show
       response.statusCode = 200
       response.setHeader(...commonHeaders)
-      renderer.view(`header`, {}, response)
-      renderer.view(`search`, {}, response)
-      renderer.view(`footer`, {}, response)
+      view(`header`, {}, response)
+      view(`search`, {}, response)
+      view(`footer`, {}, response)
       response.end()
     } else {
       //if url == '/' && POST
@@ -30,7 +30,7 @@ function home(request, response) {
       request.on("data", (postBody) => {
         //extract the username
         response.statusCode = 303
-        let query = querystring.parse(postBody.toString())
+        let query = parse(postBody.toString())
         response.setHeader(`Location`, `/${query.username}`)
         response.end()
         //redirect to /:username
@@ -46,7 +46,7 @@ function user(request, response) {
   if (username.length > 0) {
     response.statusCode = 200
     response.setHeader(...commonHeaders)
-    renderer.view(`header`, {}, response)
+    view(`header`, {}, response)
 
     //get json from Treehouse
     const studentProfile = new Profile(username)
@@ -64,21 +64,19 @@ function user(request, response) {
 
       // simple response
 
-      renderer.view(`profile`, values, response)
-      renderer.view(`footer`, {}, response)
+      view(`profile`, values, response)
+      view(`footer`, {}, response)
       response.end()
     })
 
     //on "error"
     studentProfile.on("error", (error) => {
       //show error
-      renderer.view(`error`, { errorMessage: error.message }, response)
-      renderer.view(`search`, {}, response)
-      renderer.view(`footer`, {}, response)
+      view(`error`, { errorMessage: error.message }, response)
+      view(`search`, {}, response)
+      view(`footer`, {}, response)
       response.end()
     })
   }
 }
-module.exports.css = css
-module.exports.home = home
-module.exports.user = user
+export { css, home, user }

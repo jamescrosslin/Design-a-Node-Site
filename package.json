@@ -1,0 +1,28 @@
+{
+  "name": "design_a_node_site",
+  "version": "1.0.0",
+  "description": "A simple node server",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "none"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mightykrakyn/Design-a-Node-Site.git"
+  },
+  "keywords": [
+    "node",
+    "nodejs",
+    "server",
+    "simple",
+    "vanilla",
+    "javascript"
+  ],
+  "author": "James Crosslin <jamesmscrosslin@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mightykrakyn/Design-a-Node-Site/issues"
+  },
+  "homepage": "https://github.com/mightykrakyn/Design-a-Node-Site#readme"
+}

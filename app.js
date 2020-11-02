@@ -1,22 +1,22 @@
-const router = require("./router.js")
+import { css, home, user } from "./router.js"
 
 //Problem: We need a simple way to look at a user's badge count and JavaScript points from a web browser
 
 //Solution: Use Node.js to perform the profile look ups and serve our template via HTTP
 
 // Create a web server
-const http = require("http")
+import { createServer } from "http"
 
 const hostname = "127.0.0.1"
 const port = 3000
 
-const server = http.createServer((request, response) => {
-  router.css(request, response)
+const server = createServer((request, response) => {
+  css(request, response)
   if (!response.headersSent) {
-    router.home(request, response)
+    home(request, response)
   }
   if (!response.headersSent) {
-    router.user(request, response)
+    user(request, response)
   }
 })
 
